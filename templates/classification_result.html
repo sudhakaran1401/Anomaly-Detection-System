@@ -1,0 +1,333 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- PAGE HEADER -->
+    <div class="text-center mb-5">
+
+        <h2 class="fw-bold"> Classification Analysis Report </h2>
+
+    </div>
+
+    <!-- DATASET INFORMATION -->
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <p> <strong>Dataset:</strong> {{ filename }} </p>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <p>
+                        <strong>Model:</strong>
+                        {{ model_name|title }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- DETECTION SUMMARY -->
+<div class="row g-3 justify-content-between mb-5">
+
+            <div class="col-md-4">
+                <div class="card border-primary text-center h-100">
+                    <div class="card-body">
+                        <h6>Total Records</h6>
+                         <h3 class="text-primary">{{ metrics.summary.total_records }}</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-success text-center h-100">
+                    <div class="card-body">
+                        <h6>Normal</h6>
+                        <h3 class="text-success">
+                            {{ metrics.summary.normal_records }}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-danger text-center h-100">
+                    <div class="card-body">
+                        <h6>Anomalies</h6>
+                        <h3 class="text-danger">
+                            {{ metrics.summary.anomaly_records }}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="col-md-2">
+                <div class="card border-success text-center h-100">
+                    <div class="card-body">
+                        <h6>Detected</h6>
+                        <h3 class="text-success">
+                            {{ metrics.summary.detected_anomalies }}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="card border-warning text-center h-100">
+                    <div class="card-body">
+                        <h6>Missed</h6>
+                        <h3 class="text-warning">
+                            {{ metrics.summary.missed_anomalies }}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="card border-danger text-center h-100">
+                    <div class="card-body">
+                        <h6>False Alarms</h6>
+                        <h3 class="text-danger">
+                            {{ metrics.summary.false_alarms }}
+                        </h3>
+                    </div>
+                </div>
+            </div>-->
+</div>
+
+    <!-- METRIC CARDS -->
+    <div class="row g-3 justify-content-between">
+
+        <div class="col-md-2">
+
+            <div class="card border-success shadow-sm h-100">
+
+                <div class="card-body text-center">
+
+                    <h6> Accuracy </h6>
+
+                    <h3 class="text-success fw-bold"> {{ metrics.accuracy|floatformat:4 }} </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+
+            <div class="card border-primary shadow-sm h-100">
+
+                <div class="card-body text-center">
+
+                    <h6> Precision </h6>
+
+                    <h3 class="text-primary fw-bold"> {{ metrics.precision|floatformat:4 }} </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+
+            <div class="card border-warning shadow-sm h-100">
+
+                <div class="card-body text-center">
+
+                    <h6> Recall </h6>
+
+                    <h3 class="text-warning fw-bold"> {{ metrics.recall|floatformat:4 }} </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+
+            <div class="card border-danger shadow-sm h-100">
+
+                <div class="card-body text-center">
+
+                    <h6> F1 Score </h6>
+
+                    <h3 class="text-danger fw-bold"> {{ metrics.f1|floatformat:4 }} </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+
+            <div class="card border-danger shadow-sm h-100">
+
+                <div class="card-body text-center">
+
+                    <h6> ROC-AUC Score </h6>
+
+                    {% if metrics.roc_auc %}
+
+                        <h3 class="text-info fw-bold"> {{ metrics.roc_auc|floatformat:4 }} </h3>
+
+                    {% else %}
+
+                        <h5 class="text-muted"> Not Available </h5>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>    
+
+    <!-- CONFUSION MATRIX TABLE -->
+    <div class="card shadow mt-4">
+
+        <div class="card-header">
+
+            <h5 class="mb-0"> Confusion Matrix </h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered text-center">
+
+                <thead class="table-light">
+
+                    <tr>
+
+                        <th></th>
+
+                        <th>Predicted Normal</th>
+
+                        <th>Predicted Anomaly</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <th>Actual Normal</th>
+
+                        <td> {{ metrics.confusion_matrix.0.0 }} </td>
+
+                        <td> {{ metrics.confusion_matrix.0.1 }} </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <th>Actual Anomaly</th>
+
+                        <td> {{ metrics.confusion_matrix.1.0 }} </td>
+
+                        <td> {{ metrics.confusion_matrix.1.1 }} </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- CONFUSION MATRIX CHART -->
+    {% if confusion_matrix_chart %}
+
+    <div class="card shadow mt-4">
+
+        <div class="card-header">
+
+            <h5 class="mb-0"> Confusion Matrix Visualization </h5>
+
+        </div>
+
+        <div class="card-body text-center">
+
+            <img src="/media/confusion_matrix.png" class="img-fluid" alt="Confusion Matrix" >
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    <!-- PERFORMANCE INSIGHT -->
+    <div class="card shadow mt-4">
+
+        <div class="card-body">
+
+            <h5> Performance Insight </h5>
+
+            {% if metrics.f1 >= 0.90 %}
+
+                <div class="alert alert-success">
+
+                    Excellent model performance.
+                    Predictions are highly reliable.
+
+                </div>
+
+            {% elif metrics.f1 >= 0.75 %}
+
+                <div class="alert alert-warning">
+
+                    Good model performance.
+                    Further tuning may improve results.
+
+                </div>
+
+            {% else %}
+
+                <div class="alert alert-danger">
+
+                    Model performance is below expectations.
+                    Consider feature engineering,
+                    balancing classes,
+                    and hyperparameter tuning.
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="text-center mt-5">
+
+        <a href="{% url 'home' %}" class="btn btn-primary" > Upload Another Dataset </a>
+
+        <a href="{% url 'download_classification_pdf' %}" class="btn btn-danger"> Download PDF Report </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card p-4 shadow-lg">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <h4 class="fw-bold mb-0"> Detection History </h4>
+
+            <a href="{% url 'clear_all_history' %}" class="btn btn-sm btn-danger" onclick="return confirm('Delete all history?')" >
+
+                <i class="bi bi-trash"></i>
+
+                Clear
+
+            </a>
+
+        </div>
+        <div class="table-responsive">
+
+            <table id= "historyTable" class="table table-bordered table-striped table-hover text-center align-middle">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>File</th>
+
+                        <th>Model</th>
+
+                        <th>Scaler</th>
+
+                        <th>Contamination</th>
+
+                        <th>Anomalies</th>
+
+                        <th>Date</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for item in history_data %}
+
+                    <tr>
+
+                        <td>
+                            {{ forloop.counter }}
+                        </td>
+
+                        <td class="fw-semibold">
+
+                            {{ item.filename }}
+
+                        </td>
+
+                        <td>
+
+                            <span class="badge bg-primary">
+
+                                {{ item.model_name }}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <span class="badge bg-secondary">
+
+                                {{ item.scaler_type }}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            {{ item.contamination }}
+
+                        </td>
+
+                        <td>
+
+                            <span class="badge bg-danger">
+
+                                {{ item.anomaly_count }}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            {{ item.created_at }}
+
+                        </td>
+
+                        <td>
+
+                            <a href="{% url 'clear_history' item.id %}" class="btn btn-sm btn-danger">Clear</a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+            {% include 'components/pagination.html' %}
+        </div>
+
+    </div>
+
+</div>
+
+<script>initTable("historyTable")</script>
+{% endblock %}
+
+
