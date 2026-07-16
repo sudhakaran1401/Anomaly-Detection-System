@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<div class="container vh-100 d-flex align-items-center justify-content-center">
+
+    <div class="card upload-card shadow p-4 col-md-5 text-center">
+
+        <!-- Title -->
+        <h3 class="mb-2">Smart Anomaly Detection</h3>
+
+        <p class="text-muted mb-4">
+            Upload your dataset to detect anomalies instantly
+        </p>
+
+        <!-- Upload Form -->
+        <form method="post"
+              enctype="multipart/form-data"
+              onsubmit="showLoader()">
+
+            {% csrf_token %}
+
+            <!-- Upload Area -->
+            <label class="upload-area w-100 mb-3">
+
+                <input
+                    type="file"
+                    name="file"
+                    class="form-control d-none"
+                    id="fileInput"
+                >
+
+                <div id="fileText">
+
+                    <h6 class="mb-1">
+                        Click or drag file here
+                    </h6>
+
+                    <small class="text-muted">
+                        Supports CSV files
+                    </small>
+
+                </div>
+
+            </label>
+
+            <!-- Selected Filename -->
+
+            <div
+                id="fileName"
+                class="text-success mb-3"
+                style="display:none;"
+            >
+            </div>
+
+            <!-- Algorithm -->
+
+            <select
+                name="model_name"
+                class="form-select mb-3"
+            >
+
+                <optgroup label="Anomaly Detection">
+
+                    <option value="isolation_forest">
+                        Isolation Forest
+                    </option>
+
+                    <option value="lof">
+                        Local Outlier Factor
+                    </option>
+
+                    <option value="svm">
+                        One-Class SVM
+                    </option>
+
+                    <option value="dbscan">
+                        DBSCAN
+                    </option>
+
+                </optgroup>
+
+                <optgroup label="Classification">
+
+                    <option value="random_forest">
+                        Random Forest
+                    </option>
+
+                    <option value="logistic_regression">
+                        Logistic Regression
+                    </option>
+
+                    <option value="decision_tree">
+                        Decision Tree
+                    </option>
+
+                    <option value="xgboost">
+                        XGBoost
+                    </option>
+
+                </optgroup>
+
+            </select>
+
+            <!-- Contamination -->
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Contamination
+
+                </label>
+
+                <input
+                    type="range"
+                    min="0.01"
+                    max="0.20"
+                    step="0.01"
+                    value="0.01"
+                    name="contamination"
+                    class="form-range"
+                >
+
+            </div>
+
+            <!-- Scaler -->
+
+            <select
+                name="scaler_type"
+                class="form-select mb-4"
+            >
+
+                <option value="standard">
+                    StandardScaler
+                </option>
+
+                <option value="minmax">
+                    MinMaxScaler
+                </option>
+
+                <option value="robust">
+                    RobustScaler
+                </option>
+
+            </select>
+
+            <!-- Submit -->
+
+            <button
+                id="submitBtn"
+                class="btn btn-primary w-100"
+            >
+
+                Upload & Analyze
+
+            </button>
+
+        </form>
+
+        <!-- Loader -->
+
+        <div
+            id="loader"
+            class="text-center mt-3"
+            style="display:none;"
+        >
+
+            <div
+                class="spinner-border text-primary"
+                role="status"
+            >
+            </div>
+
+            <p class="mt-2">
+
+                Processing file... Please wait
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{% static 'js/home.js' %}"></script>
+
+{% endblock %}
