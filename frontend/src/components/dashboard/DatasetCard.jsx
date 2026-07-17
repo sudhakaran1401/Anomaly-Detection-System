@@ -8,7 +8,7 @@ export default function DatasetCard({
             <div className="card-body">
                 <div className="row align-items-center">
 
-                    <div className="col-md-8">
+                    <div className="col-md-8 d-flex justify-content-between gap-3">
                         <p className="mb-1">
                             <strong>Dataset :</strong>{" "}
                             {filename}

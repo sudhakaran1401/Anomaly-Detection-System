@@ -1,10 +1,7 @@
-import { useTheme } from "../../components/ThemeContext";
 import StatCard from "./StatCard";
 
 export default function DatasetSummary({ dataset }) {
-    const { darkMode } = useTheme();
-
-    const items = [
+    const cards = [
         {
             title: "Total Dataset Records",
             value: dataset.total_dataset_records,
@@ -23,24 +20,20 @@ export default function DatasetSummary({ dataset }) {
     ];
 
     return (
-        <div className="card shadow-sm mb-4">
-            <div className="card-body">
-                <div className="row text-center">
-                    {items.map((item) => (
-                        <div
-                            key={item.title}
-                            className="col-md-4"
-                        >
-                            <StatCard
-                                title={item.title}
-                                value={item.value}
-                                color={item.color}
-                                darkMode={darkMode}
-                            />
-                        </div>
-                    ))}
+        <div className="row g-3 justify-content-between mb-4">
+            {cards.map((card) => (
+                <div
+                    key={card.title}
+                    className="col-md-4"
+                >
+                    <StatCard
+                        title={card.title}
+                        value={card.value}
+                        color={card.color}
+                        bordered
+                    />
                 </div>
-            </div>
+            ))}
         </div>
     );
 }

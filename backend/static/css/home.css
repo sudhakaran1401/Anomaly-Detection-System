@@ -315,3 +315,9 @@ body.dark-mode .upload-area {
     transform: scale(1.05);
 
 }
+
+.confusion-img {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+}

@@ -154,9 +154,9 @@ export default function ClassificationDashboard() {
                 modelName={modelName}
             />
 
-            <DatasetSummary
+            {/* <DatasetSummary
                 dataset={dataset}
-            />
+            /> */}
 
             <DetectionSummary
                 summary={summary}

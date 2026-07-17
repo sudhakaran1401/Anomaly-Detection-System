@@ -5,39 +5,31 @@
 
     <!-- PAGE HEADER -->
     <div class="text-center mb-5">
-
-        <h2 class="fw-bold"> Classification Analysis Report </h2>
-
+        <h2 class="fw-bold">
+            Classification Analysis Report
+        </h2>
     </div>
 
     <!-- DATASET INFORMATION -->
-    <div class="card shadow-sm mb-4">
+    <div class="card shadow-sm mb-5 ">
 
         <div class="card-body">
 
             <div class="row">
 
-                <div class="col-md-4">
+                <div class="col-md-6">
 
-                    <p>
+                    <strong>Dataset:</strong>
 
-                        <strong>Dataset:</strong>
-
-                        {{ filename }}
-
-                    </p>
+                    {{ filename }}
 
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6 text-md-start">
 
-                    <p>
+                    <strong>Model:</strong>
 
-                        <strong>Model:</strong>
-
-                        {{ model_name|title }}
-
-                    </p>
+                    {{ model_name|title }}
 
                 </div>
 
@@ -48,27 +40,18 @@
     </div>
 
     <!-- DATASET SUMMARY -->
-    <!-- <div class="card shadow-sm mb-4">
 
-        <div class="card-header">
+    <!-- <div class="row g-3 justify-content-between mb-5">
 
-            <h5 class="mb-0">
+        <div class="col-md-4">
 
-                Dataset Summary
+            <div class="card border-primary shadow-sm h-100">
 
-            </h5>
-
-        </div>
-
-        <div class="card-body">
-
-            <div class="row text-center">
-
-                <div class="col-md-4">
+                <div class="card-body text-center">
 
                     <h6>Total Dataset Records</h6>
 
-                    <h3 class="text-primary">
+                    <h3 class="text-primary fw-bold">
 
                         {{ metrics.dataset_summary.total_dataset_records }}
 
@@ -76,11 +59,19 @@
 
                 </div>
 
-                <div class="col-md-4">
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card border-success shadow-sm h-100">
+
+                <div class="card-body text-center">
 
                     <h6>Training Records</h6>
 
-                    <h3 class="text-success">
+                    <h3 class="text-success fw-bold">
 
                         {{ metrics.dataset_summary.training_records }}
 
@@ -88,11 +79,19 @@
 
                 </div>
 
-                <div class="col-md-4">
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card border-danger shadow-sm h-100">
+
+                <div class="card-body text-center">
 
                     <h6>Testing Records</h6>
 
-                    <h3 class="text-danger">
+                    <h3 class="text-danger fw-bold">
 
                         {{ metrics.dataset_summary.testing_records }}
 
@@ -107,17 +106,18 @@
     </div> -->
 
     <!-- DETECTION SUMMARY -->
+
     <div class="row g-3 justify-content-between mb-5">
 
         <div class="col-md-4">
 
-            <div class="card border-primary text-center h-100">
+            <div class="card border-primary shadow-sm h-100">
 
-                <div class="card-body">
+                <div class="card-body text-center">
 
                     <h6>Total Records</h6>
 
-                    <h3 class="text-primary">
+                    <h3 class="text-primary fw-bold">
 
                         {{ metrics.summary.total_records }}
 
@@ -131,13 +131,13 @@
 
         <div class="col-md-4">
 
-            <div class="card border-success text-center h-100">
+            <div class="card border-success shadow-sm h-100">
 
-                <div class="card-body">
+                <div class="card-body text-center">
 
                     <h6>Normal</h6>
 
-                    <h3 class="text-success">
+                    <h3 class="text-success fw-bold">
 
                         {{ metrics.summary.normal_records }}
 
@@ -151,13 +151,13 @@
 
         <div class="col-md-4">
 
-            <div class="card border-danger text-center h-100">
+            <div class="card border-danger shadow-sm h-100">
 
-                <div class="card-body">
+                <div class="card-body text-center">
 
                     <h6>Anomalies</h6>
 
-                    <h3 class="text-danger">
+                    <h3 class="text-danger fw-bold">
 
                         {{ metrics.summary.anomaly_records }}
 
@@ -171,10 +171,11 @@
 
     </div>
 
-    <!-- METRIC CARDS -->
-    <div class="row g-3 justify-content-between">
+    <!-- METRICS -->
 
-        <div class="col-md-2">
+    <div class="row g-3 justify-content-between mb-4">
+
+        <div class="col">
 
             <div class="card border-success shadow-sm h-100">
 
@@ -194,7 +195,7 @@
 
         </div>
 
-        <div class="col-md-2">
+        <div class="col">
 
             <div class="card border-primary shadow-sm h-100">
 
@@ -214,7 +215,7 @@
 
         </div>
 
-        <div class="col-md-2">
+        <div class="col">
 
             <div class="card border-warning shadow-sm h-100">
 
@@ -234,7 +235,7 @@
 
         </div>
 
-        <div class="col-md-2">
+        <div class="col">
 
             <div class="card border-danger shadow-sm h-100">
 
@@ -254,29 +255,29 @@
 
         </div>
 
-        <div class="col-md-2">
+        <div class="col">
 
             <div class="card border-info shadow-sm h-100">
 
                 <div class="card-body text-center">
 
-                    <h6>ROC-AUC Score</h6>
+                    <h6>ROC-AUC</h6>
 
                     {% if metrics.roc_auc %}
 
-                        <h3 class="text-info fw-bold">
+                    <h3 class="text-info fw-bold">
 
-                            {{ metrics.roc_auc|floatformat:4 }}
+                        {{ metrics.roc_auc|floatformat:4 }}
 
-                        </h3>
+                    </h3>
 
                     {% else %}
 
-                        <h5 class="text-muted">
+                    <h5 class="text-muted">
 
-                            Not Available
+                        Not Available
 
-                        </h5>
+                    </h5>
 
                     {% endif %}
 
@@ -287,8 +288,8 @@
         </div>
 
     </div>
+        <!-- CONFUSION MATRIX -->
 
-    <!-- CONFUSION MATRIX TABLE -->
     <div class="card shadow mt-4">
 
         <div class="card-header">
@@ -303,54 +304,83 @@
 
         <div class="card-body">
 
-            <table class="table table-bordered text-center">
+            <div class="row align-items-center">
 
-                <thead>
+                <!-- TABLE -->
 
-                    <tr>
+                <div class="col-md-6">
 
-                        <th></th>
+                    <table class="table table-bordered text-center mb-0">
 
-                        <th>Predicted Normal</th>
+                        <thead>
 
-                        <th>Predicted Anomaly</th>
+                            <tr>
 
-                    </tr>
+                                <th></th>
 
-                </thead>
+                                <th>Predicted Normal</th>
 
-                <tbody>
+                                <th>Predicted Anomaly</th>
 
-                    <tr>
+                            </tr>
 
-                        <th>Actual Normal</th>
+                        </thead>
 
-                        <td>{{ metrics.confusion_matrix.0.0 }}</td>
+                        <tbody>
 
-                        <td>{{ metrics.confusion_matrix.0.1 }}</td>
+                            <tr>
 
-                    </tr>
+                                <th>Actual Normal</th>
 
-                    <tr>
+                                <td>{{ metrics.confusion_matrix.0.0 }}</td>
 
-                        <th>Actual Anomaly</th>
+                                <td>{{ metrics.confusion_matrix.0.1 }}</td>
 
-                        <td>{{ metrics.confusion_matrix.1.0 }}</td>
+                            </tr>
 
-                        <td>{{ metrics.confusion_matrix.1.1 }}</td>
+                            <tr>
 
-                    </tr>
+                                <th>Actual Anomaly</th>
 
-                </tbody>
+                                <td>{{ metrics.confusion_matrix.1.0 }}</td>
 
-            </table>
+                                <td>{{ metrics.confusion_matrix.1.1 }}</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- IMAGE -->
+
+                {% if confusion_matrix_chart %}
+
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+
+                    <img
+
+                        src="/media/{{ confusion_matrix_chart }}"
+
+                        alt="Confusion Matrix"
+
+                        class="img-fluid rounded confusion-img"
+
+                    >
+
+                </div>
+
+                {% endif %}
+
+            </div>
 
         </div>
 
     </div>
 
-    <!-- CONFUSION MATRIX VISUALIZATION -->
-    {% if confusion_matrix_chart %}
+    <!-- PERFORMANCE INSIGHT -->
 
     <div class="card shadow mt-4">
 
@@ -358,59 +388,41 @@
 
             <h5 class="mb-0">
 
-                Confusion Matrix Visualization
+                Performance Insight
 
             </h5>
 
         </div>
 
-        <div class="card-body text-center">
-
-            <img
-                src="/media/{{ confusion_matrix_chart }}"
-                class="img-fluid"
-                alt="Confusion Matrix"
-            >
-
-        </div>
-
-    </div>
-
-    {% endif %}
-
-    <!-- PERFORMANCE INSIGHT -->
-    <div class="card shadow mt-4">
-
         <div class="card-body">
-
-            <h5>Performance Insight</h5>
 
             {% if metrics.f1 >= 0.90 %}
 
-                <div class="alert alert-success">
+                <div class="alert alert-success mb-0">
 
-                    Excellent model performance.
-                    Predictions are highly reliable.
+                    <strong>Excellent Performance!</strong>
+
+                    The classifier demonstrates outstanding predictive capability with high accuracy, precision, recall, and F1-score. The model is well-balanced and suitable for deployment.
 
                 </div>
 
             {% elif metrics.f1 >= 0.75 %}
 
-                <div class="alert alert-warning">
+                <div class="alert alert-warning mb-0">
 
-                    Good model performance.
-                    Further tuning may improve results.
+                    <strong>Good Performance.</strong>
+
+                    The classifier performs well overall, though further improvements through feature engineering or hyperparameter tuning could enhance prediction quality.
 
                 </div>
 
             {% else %}
 
-                <div class="alert alert-danger">
+                <div class="alert alert-danger mb-0">
 
-                    Model performance is below expectations.
-                    Consider feature engineering,
-                    balancing classes,
-                    and hyperparameter tuning.
+                    <strong>Needs Improvement.</strong>
+
+                    Model performance is below expectations. Consider improving data quality, balancing classes, selecting better features, or tuning the model parameters.
 
                 </div>
 
@@ -421,11 +433,15 @@
     </div>
 
     <!-- ACTION BUTTONS -->
+
     <div class="text-center mt-5">
 
         <a
+
             href="{% url 'home' %}"
-            class="btn btn-primary"
+
+            class="btn btn-primary me-2"
+
         >
 
             Upload Another Dataset
@@ -433,8 +449,11 @@
         </a>
 
         <a
+
             href="{% url 'download_classification_pdf' %}"
+
             class="btn btn-danger"
+
         >
 
             Download PDF Report

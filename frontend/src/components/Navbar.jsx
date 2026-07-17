@@ -20,14 +20,14 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
             <div className="container-fluid">
 
                 <Link
                     className="navbar-brand fw-bold"
                     to={isLoggedIn ? "/upload" : "/"}
                 >
-                    <i className="bi bi-graph-up-arrow me-2"></i>
+                    <i class="bi bi-graph-up-arrow"></i>
                     Anomaly Detection Platform
                 </Link>
 

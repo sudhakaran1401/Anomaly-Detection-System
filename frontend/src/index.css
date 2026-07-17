@@ -877,3 +877,9 @@ body.dark-mode .dropdown-item:hover {
     border-color: var(--info) !important;
 
 }
+
+.confusion-img {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+}
