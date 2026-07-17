@@ -1,60 +1,116 @@
+
 # 🔍 Smart Anomaly Detection & Classification Platform
 
-::: {align="center"}
-**An End-to-End Machine Learning Analytics Platform**
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Django](https://img.shields.io/badge/Django-REST%20Framework-green)
+![React](https://img.shields.io/badge/React-Vite-61DAFB)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange)
 
-Built with **Django • Django REST Framework • React • Scikit-Learn •
-XGBoost**
+An end-to-end Machine Learning Analytics Platform that allows users to upload datasets, automatically preprocess them, detect anomalies using multiple unsupervised algorithms, optionally generate pseudo-labels, train supervised classifiers, explain predictions, visualize results, and export professional reports through a modern web interface.
 
-Detect anomalies, classify data, generate explainable insights,
-visualize results, and export professional reports.
-:::
+---
 
-------------------------------------------------------------------------
+# ✨ What This Project Does
 
-## ✨ Overview
+The platform provides a complete machine learning workflow instead of just running a single model.
 
-This project is a full-stack **Machine Learning Analytics Platform** for
-analyzing structured datasets. It supports both **unsupervised anomaly
-detection** and **supervised classification**, integrating data
-ingestion, preprocessing, feature engineering, explainable AI (XAI),
-visualization, reporting, model persistence, and REST APIs into one
-modular application.
+1. Upload a CSV dataset.
+2. Validate and preprocess the data.
+3. Perform feature engineering and scaling.
+4. Detect anomalies using multiple algorithms.
+5. Generate pseudo-labels from anomaly predictions.
+6. Train classification models when labels are unavailable.
+7. Evaluate model performance.
+8. Explain predictions using feature importance.
+9. Visualize results with PCA and dashboards.
+10. Store prediction history and export reports.
 
-------------------------------------------------------------------------
+---
 
-## 🚀 Features
+# 🚀 Features
 
-### 📂 Intelligent Dataset Processing
+## Dataset Processing
+- CSV upload
+- Automatic validation
+- Missing value handling
+- Numerical feature extraction
+- Data preprocessing pipeline
 
--   CSV upload and validation
--   Automatic dataset analysis
--   Labelled & unlabelled dataset support
--   Missing value handling
--   Numerical feature extraction
--   Preprocessing pipeline
+## Anomaly Detection
+- Isolation Forest
+- Local Outlier Factor (LOF)
+- One-Class SVM
+- DBSCAN
+- Weighted Ensemble
 
-### 🧠 Machine Learning
+## Classification
+- Random Forest
+- Decision Tree
+- Logistic Regression
+- XGBoost
 
-#### Unsupervised
+## Explainable AI
+- Feature importance
+- Human-readable prediction explanations
 
--   Isolation Forest
--   Local Outlier Factor (LOF)
--   One-Class SVM
--   DBSCAN
--   Weighted Ensemble
+## Analytics
+- Detection statistics
+- PCA visualization
+- Histograms
+- Confusion Matrix
+- Performance metrics
 
-#### Supervised
+## Reports
+- PDF export
+- CSV export
+- Detection history
+- Stored model information
 
--   Random Forest
--   Logistic Regression
--   Decision Tree
--   XGBoost
+## Security
+- JWT Authentication
+- User-specific data
+- Protected REST APIs
 
-### 🏷️ Pseudo-Labeling Pipeline
+---
 
-``` text
+# 📸 Screenshots
+
+## Login
+![Login](images/Login.png)
+
+## Upload Form
+![Upload](images/Upload%20Form.png)
+
+## Detection Dashboard
+![Detection Dashboard](images/Detection%20Dashboard.png)
+
+## Classification Dashboard
+![Classification Dashboard](images/Classification%20Dashboard.png)
+
+## History
+![History](images/History.png)
+
+## Dark Mode
+![Dark Mode](images/Dark%20Mode.png)
+
+---
+
+# 🧠 Workflow
+
+```text
 Dataset
+   │
+   ▼
+Validation
+   │
+   ▼
+Preprocessing
+   │
+   ▼
+Feature Engineering
+   │
+   ▼
+Scaling
    │
    ▼
 Anomaly Detection
@@ -63,180 +119,70 @@ Anomaly Detection
 Pseudo Labels
    │
    ▼
-Classification Model
-```
-
-Converts anomaly detection outputs into pseudo-labels that can be used
-to train supervised classifiers when labelled data is unavailable.
-
-### ⚙️ Feature Engineering
-
--   Z-Score Features
--   CPU-to-Memory Ratio
--   Response-Time Efficiency Metrics
-
-### 🔍 Explainable AI
-
-Human-readable explanations for anomaly predictions.
-
-Example:
-
-> Salary deviates significantly from expected behaviour.
-
-### 📊 Analytics Dashboard
-
--   Total Records
--   Normal Records
--   Anomaly Count
--   Detection Percentage
--   PCA Visualization
--   Confusion Matrix
--   Histograms
-
-### 📈 Model Evaluation
-
-**Classification** - Accuracy - Precision - Recall - F1 Score - ROC-AUC
-
-**Anomaly Detection** - Anomaly Count - Detection Percentage - Average
-Anomaly Score
-
-### 💾 Model Persistence
-
--   Joblib serialization
--   Model versioning
--   Model reloading
-
-### 📋 Detection History
-
-Stores: - Dataset - Model - Scaler - Metrics - Configuration - Timestamp
-
-### 📥 Reporting
-
--   CSV Export
--   PDF Reports
--   Charts
--   PCA Visualizations
--   Statistical Summary
-
-### 🔐 Security
-
--   JWT Authentication
--   Protected APIs
--   User-specific access
-
-------------------------------------------------------------------------
-
-# 🏗️ Machine Learning Workflow
-
-``` text
-Authentication
-      │
-      ▼
-Upload Dataset
-      │
-      ▼
-Dataset Validation
-      │
-      ▼
-Feature Engineering
-      │
-      ▼
-Scaling
-      │
-      ▼
-Model Factory
-      │
-      ▼
-Anomaly Detection
-      │
-      ▼
-Pseudo-Label Generation
-      │
-      ▼
 Classification
-      │
-      ▼
+   │
+   ▼
 Evaluation
-      │
-      ▼
+   │
+   ▼
 Explainability
-      │
-      ▼
-PCA Visualization
-      │
-      ▼
-Analytics Dashboard
-      │
-      ▼
-Reports & REST APIs
+   │
+   ▼
+Dashboard & Reports
 ```
 
-------------------------------------------------------------------------
+---
 
-# 🛠️ Technology Stack
+# 🛠 Technology Stack
 
-## Backend
+### Backend
+- Python
+- Django
+- Django REST Framework
 
--   Python
--   Django
--   Django REST Framework
--   JWT Authentication
+### Frontend
+- React
+- Vite
+- Axios
 
-## Frontend
+### Machine Learning
+- Scikit-Learn
+- XGBoost
+- NumPy
+- Pandas
 
--   React
--   Vite
--   Axios
+### Visualization
+- Matplotlib
+- PCA
 
-## Machine Learning
+### Reporting
+- ReportLab
 
--   Scikit-Learn
--   XGBoost
--   Pandas
--   NumPy
+### Database
+- SQLite (Development)
+- PostgreSQL Ready
 
-## Visualization
+---
 
--   Matplotlib
--   PCA
+# 📁 Project Structure
 
-## Reporting
-
--   ReportLab
-
-## Database
-
--   SQLite
--   PostgreSQL Ready
-
-------------------------------------------------------------------------
-
-# 📂 Project Structure
-
-``` text
-Anomaly_Detection/
-│
-├── anomaly/
-│   ├── api/
-│   ├── ml/
-│   ├── services/
-│   ├── templates/
-│   ├── static/
-│
-├── classification/
-├── frontend/
-├── accounts/
-├── saved_models/
-├── media/
-├── requirements.txt
-└── manage.py
+```text
+anomaly/
+classification/
+accounts/
+frontend/
+saved_models/
+media/
+images/
+manage.py
+requirements.txt
 ```
 
-------------------------------------------------------------------------
+---
 
-# ⚙️ Installation
+# ⚙ Installation
 
-``` bash
+```bash
 git clone https://github.com/your-username/anomaly-detection-platform.git
 cd anomaly-detection-platform
 
@@ -245,7 +191,7 @@ python -m venv venv
 # Windows
 venv\Scripts\activate
 
-# Linux/macOS
+# Linux
 source venv/bin/activate
 
 pip install -r requirements.txt
@@ -255,52 +201,23 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-------------------------------------------------------------------------
-
-# ✨ Design Patterns
-
--   Factory Pattern
--   Service Layer Pattern
--   Modular ML Pipeline
-
-------------------------------------------------------------------------
-
-# 🌟 Highlights
-
--   Multi-Model ML Framework
--   Hybrid Unsupervised + Supervised Learning
--   Pseudo-Labeling
--   Explainable AI (XAI)
--   PCA Visualization
--   Interactive Dashboard
--   Model Persistence
--   Detection History
--   REST APIs
--   JWT Authentication
--   PDF Reporting
-
-------------------------------------------------------------------------
+---
 
 # 🔮 Future Enhancements
 
--   Docker
--   Redis
--   Celery
--   AutoML
--   Kubernetes
--   AWS / Azure Deployment
+- Docker deployment
+- Redis & Celery
+- AutoML
+- Kubernetes
+- Cloud deployment
+- Real-time anomaly detection
 
-------------------------------------------------------------------------
+---
 
 # 👨‍💻 Author
 
 **Sudha Karan**
 
-Full Stack Developer \| Machine Learning Enthusiast
+Python Full Stack Developer | Machine Learning Enthusiast
 
-------------------------------------------------------------------------
-
-# ⭐ Support
-
-If you found this project useful, please consider giving it a ⭐ on
-GitHub.
+If you found this project useful, please give it a ⭐ on GitHub.
