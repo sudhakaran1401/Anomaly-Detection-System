@@ -1,6 +1,5 @@
 # 🔍 Smart Anomaly Detection & Classification Platform
 
-::: {align="center"}
 **An End-to-End Machine Learning Analytics Platform**
 
 Built with **Django • Django REST Framework • React • Scikit-Learn •
