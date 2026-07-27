@@ -1,0 +1,48 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    container_name: anomaly_backend
+
+    env_file:
+      - ./backend/.env
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      # Persist SQLite database
+      - backend_database:/app/database
+
+      # Persist generated media
+      - backend_media:/app/media
+
+      # Persist collected static files
+      - backend_static:/app/staticfiles
+
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:8000
+
+    container_name: anomaly_frontend
+
+    ports:
+      - "5173:80"
+
+    depends_on:
+      - backend
+
+    restart: unless-stopped
+
+
+volumes:
+  backend_database:
+  backend_media:
+  backend_static:

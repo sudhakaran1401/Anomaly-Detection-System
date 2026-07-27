@@ -1,0 +1,22 @@
+
+<div class="d-flex justify-content-between mt-2">
+    <div>
+        <label>Rows per page:</label>
+        <select id="rowsSelect" onchange="changeRowsPerPage()" class="form-select d-inline-block w-auto ms-2">
+            <option value="5" selected>5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+    </div>
+    <div>
+        <span id="pageInfo" class="align-self-center"></span>
+    </div>
+    
+    <div>
+        <button id="prevBtn" class="btn btn-primary btn-sm" onclick="prevPage()">Previous</button>
+        <button id="nextBtn" class="btn btn-primary btn-sm" onclick="nextPage()">Next</button>
+    </div>
+</div>
+
+
