@@ -459,6 +459,106 @@ http://localhost:5173
 
 ---
 
+# 🌐 Current Production Deployment
+
+The Smart Anomaly Detection & Classification Platform is currently deployed using **Vercel** for the frontend and **Railway** for the backend.
+
+## Live Application
+
+- **Frontend (Vercel):** https://anomaly-detection-system-eight.vercel.app/
+- **Backend (Railway):** https://anomaly-detection-system-b25.up.railway.app/
+
+## Deployment Architecture
+
+```text
+                 User / Browser
+                       │
+                       ▼
+              React + Vite Frontend
+                    Vercel
+                       │
+                       │ HTTPS / REST API
+                       ▼
+            Django REST Framework
+                   Railway
+                       │
+                       ▼
+              Application Services
+                 & ML Pipeline
+```
+
+### Frontend — Vercel
+
+The **React + Vite frontend** is deployed on **Vercel**.
+
+```text
+https://anomaly-detection-system-eight.vercel.app/
+```
+
+The frontend communicates with the Django REST API hosted on Railway.
+
+### Backend — Railway
+
+The **Django REST Framework backend** is deployed on **Railway**.
+
+```text
+https://anomaly-detection-system-b25.up.railway.app/
+```
+
+Production secrets, database configuration, allowed hosts, CORS settings, and other sensitive values should be configured using environment variables on the deployment platform and should not be committed to the repository.
+
+---
+
+# 🐳 Docker Deployment
+
+The project includes Docker configuration for containerized deployment of the application.
+
+## Docker Files
+
+```text
+Anomaly_Detection/
+│
+├── docker-compose.yml
+│
+├── backend/
+│   └── Dockerfile
+│
+└── frontend/
+    └── Dockerfile
+```
+
+The backend and frontend are containerized separately, while Docker Compose is used to define and run the project services together.
+
+## Build and Run with Docker Compose
+
+From the project root directory:
+
+```bash
+docker compose up --build
+```
+
+To run the containers in the background:
+
+```bash
+docker compose up --build -d
+```
+
+Check the running containers:
+
+```bash
+docker ps
+```
+
+To stop the services:
+
+```bash
+docker compose down
+```
+
+This provides a reproducible containerized environment for running the application services together.
+
+---
+
 # 🔌 REST APIs
 
 The application exposes REST APIs through Django REST Framework.
@@ -557,7 +657,6 @@ The anomaly detection engine performs the following operations automatically:
 
 # 🚀 Future Enhancements
 
-- Docker Support
 - PostgreSQL Production Database
 - Redis Caching
 - Celery Background Tasks
