@@ -1,0 +1,5 @@
+model,seed,contamination,threshold,accuracy,precision,recall,f1_score,specificity,false_positive_rate,false_negative_rate,confusion_matrix,anomaly_count,runtime_seconds
+isolation_forest,42,0.05,,0.6538,0.7586,0.1038,0.1826,0.9804,0.0196,0.8962,"{'true_negative': 350, 'false_positive': 7, 'false_negative': 190, 'true_positive': 22}",29,0.091899
+lof,42,0.05,,0.6292,0.52,0.0613,0.1097,0.9664,0.0336,0.9387,"{'true_negative': 345, 'false_positive': 12, 'false_negative': 199, 'true_positive': 13}",25,0.021484
+one_class_svm,42,0.05,,0.6327,0.5053,0.6792,0.5795,0.605,0.395,0.3208,"{'true_negative': 216, 'false_positive': 141, 'false_negative': 68, 'true_positive': 144}",285,0.015755
+dbscan,42,0.05,,0.3726,0.3726,1.0,0.5429,0.0,1.0,0.0,"{'true_negative': 0, 'false_positive': 357, 'false_negative': 0, 'true_positive': 212}",569,0.00163

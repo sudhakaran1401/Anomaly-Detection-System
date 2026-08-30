@@ -1,0 +1,110 @@
+name: ADS CD
+
+on:
+  workflow_run:
+    workflows:
+      - "ADS Docker CI"
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      # ----------------------------------------
+      # Frontend deployment
+      # ----------------------------------------
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm install
+
+      - name: Build frontend
+        working-directory: frontend
+        env:
+          VITE_API_URL: ${{ vars.VITE_API_URL }}
+        run: npm run build
+
+      - name: Deploy frontend to Vercel
+        working-directory: frontend
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          npx vercel pull \
+            --yes \
+            --environment=production \
+            --token="$VERCEL_TOKEN"
+
+          npx vercel build \
+            --prod \
+            --token="$VERCEL_TOKEN"
+
+          npx vercel deploy \
+            --prebuilt \
+            --prod \
+            --token="$VERCEL_TOKEN"
+
+      # ----------------------------------------
+      # Backend deployment
+      # ----------------------------------------
+
+      - name: Deploy backend to Render
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          test -n "$RENDER_DEPLOY_HOOK_URL"
+
+          curl \
+            --fail \
+            --show-error \
+            --silent \
+            --request POST \
+            "$RENDER_DEPLOY_HOOK_URL"
+
+      # ----------------------------------------
+      # Frontend health check
+      # ----------------------------------------
+
+      - name: Check frontend
+        env:
+          FRONTEND_URL: ${{ secrets.PRODUCTION_FRONTEND_URL }}
+        run: |
+          curl \
+            --fail \
+            --location \
+            --retry 5 \
+            --retry-delay 10 \
+            "$FRONTEND_URL"
+
+      # ----------------------------------------
+      # Backend health check
+      # ----------------------------------------
+
+      - name: Check backend
+        env:
+          BACKEND_URL: ${{ secrets.PRODUCTION_BACKEND_URL }}
+        run: |
+          curl \
+            --fail \
+            --location \
+            --retry 10 \
+            --retry-delay 15 \
+            "$BACKEND_URL"

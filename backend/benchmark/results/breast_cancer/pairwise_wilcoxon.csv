@@ -1,0 +1,7 @@
+metric,model_a,model_b,statistic,p_value,significant_at_0_05
+f1_score,dbscan,isolation_forest,0.0,0.0625,False
+f1_score,dbscan,lof,0.0,0.0625,False
+f1_score,dbscan,one_class_svm,0.0,0.0625,False
+f1_score,isolation_forest,lof,0.0,0.0625,False
+f1_score,isolation_forest,one_class_svm,0.0,0.0625,False
+f1_score,lof,one_class_svm,0.0,0.0625,False

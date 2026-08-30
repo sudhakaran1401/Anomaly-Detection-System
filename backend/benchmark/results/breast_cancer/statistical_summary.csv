@@ -1,0 +1,5 @@
+model,runs,accuracy_mean,accuracy_std,accuracy_min,accuracy_max,precision_mean,precision_std,precision_min,precision_max,recall_mean,recall_std,recall_min,recall_max,f1_score_mean,f1_score_std,f1_score_min,f1_score_max,specificity_mean,specificity_std,specificity_min,specificity_max,runtime_mean_seconds,runtime_std_seconds
+dbscan,5,0.3726,0.0,0.3726,0.3726,0.3726,0.0,0.3726,0.3726,1.0,0.0,1.0,1.0,0.5429,0.0,0.5429,0.5429,0.0,0.0,0.0,0.0,0.001666,0.000372
+isolation_forest,5,0.6587,0.0047,0.6538,0.6643,0.8069,0.0463,0.7586,0.8621,0.1104,0.0063,0.1038,0.1179,0.1942,0.0111,0.1826,0.2075,0.9843,0.0038,0.9804,0.9888,0.084182,0.001696
+lof,5,0.6292,0.0,0.6292,0.6292,0.52,0.0,0.52,0.52,0.0613,0.0,0.0613,0.0613,0.1097,0.0,0.1097,0.1097,0.9664,0.0,0.9664,0.9664,0.006746,0.000669
+one_class_svm,5,0.6327,0.0,0.6327,0.6327,0.5053,0.0,0.5053,0.5053,0.6792,0.0,0.6792,0.6792,0.5795,0.0,0.5795,0.5795,0.605,0.0,0.605,0.605,0.013592,0.000266

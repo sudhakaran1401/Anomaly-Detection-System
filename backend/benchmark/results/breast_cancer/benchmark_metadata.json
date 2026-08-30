@@ -1,0 +1,47 @@
+{
+  "dataset": {
+    "name": "Breast Cancer Wisconsin (Diagnostic)",
+    "source": "UCI Machine Learning Repository via scikit-learn",
+    "citation": "Street, W.N., Wolberg, W.H., Mangasarian, O.L. (1993)",
+    "label_mapping": "Malignant=1 anomaly; Benign=0 normal (proxy anomaly benchmark)",
+    "rows": 569,
+    "features": 30
+  },
+  "ensemble": {
+    "model": "weighted_ensemble",
+    "models": [
+      "isolation_forest",
+      "lof",
+      "one_class_svm"
+    ],
+    "weights": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "seed": 42,
+    "contamination": 0.05,
+    "threshold": 0.5,
+    "accuracy": 0.652,
+    "precision": 0.6842,
+    "recall": 0.1226,
+    "f1_score": 0.208,
+    "specificity": 0.9664,
+    "false_positive_rate": 0.0336,
+    "false_negative_rate": 0.8774,
+    "confusion_matrix": {
+      "true_negative": 345,
+      "false_positive": 12,
+      "false_negative": 186,
+      "true_positive": 26
+    },
+    "anomaly_count": 38,
+    "runtime_seconds": 0.105344
+  },
+  "friedman": {
+    "metric": "f1_score",
+    "statistic": 15.0,
+    "p_value": 0.001817,
+    "significant_at_0_05": true
+  }
+}

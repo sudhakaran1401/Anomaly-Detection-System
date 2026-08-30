@@ -1,0 +1,25 @@
+model,seed,contamination,threshold,accuracy,precision,recall,f1_score,specificity,false_positive_rate,false_negative_rate,confusion_matrix,anomaly_count,runtime_seconds
+isolation_forest,42,0.01,,0.6344,0.8333,0.0236,0.0459,0.9972,0.0028,0.9764,"{'true_negative': 356, 'false_positive': 1, 'false_negative': 207, 'true_positive': 5}",6,0.087734
+lof,42,0.01,,0.6309,0.6667,0.0189,0.0367,0.9944,0.0056,0.9811,"{'true_negative': 355, 'false_positive': 2, 'false_negative': 208, 'true_positive': 4}",6,0.007199
+one_class_svm,42,0.01,,0.6327,0.5053,0.6792,0.5795,0.605,0.395,0.3208,"{'true_negative': 216, 'false_positive': 141, 'false_negative': 68, 'true_positive': 144}",285,0.016723
+dbscan,42,0.01,,0.3726,0.3726,1.0,0.5429,0.0,1.0,0.0,"{'true_negative': 0, 'false_positive': 357, 'false_negative': 0, 'true_positive': 212}",569,0.001421
+isolation_forest,42,0.03,,0.6485,0.8333,0.0708,0.1304,0.9916,0.0084,0.9292,"{'true_negative': 354, 'false_positive': 3, 'false_negative': 197, 'true_positive': 15}",18,0.08416
+lof,42,0.03,,0.6274,0.5,0.0377,0.0702,0.9776,0.0224,0.9623,"{'true_negative': 349, 'false_positive': 8, 'false_negative': 204, 'true_positive': 8}",16,0.005988
+one_class_svm,42,0.03,,0.6327,0.5053,0.6792,0.5795,0.605,0.395,0.3208,"{'true_negative': 216, 'false_positive': 141, 'false_negative': 68, 'true_positive': 144}",285,0.014234
+dbscan,42,0.03,,0.3726,0.3726,1.0,0.5429,0.0,1.0,0.0,"{'true_negative': 0, 'false_positive': 357, 'false_negative': 0, 'true_positive': 212}",569,0.001362
+isolation_forest,42,0.05,,0.6538,0.7586,0.1038,0.1826,0.9804,0.0196,0.8962,"{'true_negative': 350, 'false_positive': 7, 'false_negative': 190, 'true_positive': 22}",29,0.087505
+lof,42,0.05,,0.6292,0.52,0.0613,0.1097,0.9664,0.0336,0.9387,"{'true_negative': 345, 'false_positive': 12, 'false_negative': 199, 'true_positive': 13}",25,0.006129
+one_class_svm,42,0.05,,0.6327,0.5053,0.6792,0.5795,0.605,0.395,0.3208,"{'true_negative': 216, 'false_positive': 141, 'false_negative': 68, 'true_positive': 144}",285,0.015193
+dbscan,42,0.05,,0.3726,0.3726,1.0,0.5429,0.0,1.0,0.0,"{'true_negative': 0, 'false_positive': 357, 'false_negative': 0, 'true_positive': 212}",569,0.001305
+isolation_forest,42,0.1,,0.6608,0.6667,0.1792,0.2825,0.9468,0.0532,0.8208,"{'true_negative': 338, 'false_positive': 19, 'false_negative': 174, 'true_positive': 38}",57,0.090947
+lof,42,0.1,,0.6169,0.44,0.1038,0.1679,0.9216,0.0784,0.8962,"{'true_negative': 329, 'false_positive': 28, 'false_negative': 190, 'true_positive': 22}",50,0.006415
+one_class_svm,42,0.1,,0.6327,0.5053,0.6792,0.5795,0.605,0.395,0.3208,"{'true_negative': 216, 'false_positive': 141, 'false_negative': 68, 'true_positive': 144}",285,0.01758
+dbscan,42,0.1,,0.3726,0.3726,1.0,0.5429,0.0,1.0,0.0,"{'true_negative': 0, 'false_positive': 357, 'false_negative': 0, 'true_positive': 212}",569,0.001539
+isolation_forest,42,0.15,,0.6837,0.686,0.2783,0.396,0.9244,0.0756,0.7217,"{'true_negative': 330, 'false_positive': 27, 'false_negative': 153, 'true_positive': 59}",86,0.081888
+lof,42,0.15,,0.6081,0.4267,0.1509,0.223,0.8796,0.1204,0.8491,"{'true_negative': 314, 'false_positive': 43, 'false_negative': 180, 'true_positive': 32}",75,0.006127
+one_class_svm,42,0.15,,0.6327,0.5053,0.6792,0.5795,0.605,0.395,0.3208,"{'true_negative': 216, 'false_positive': 141, 'false_negative': 68, 'true_positive': 144}",285,0.013433
+dbscan,42,0.15,,0.3726,0.3726,1.0,0.5429,0.0,1.0,0.0,"{'true_negative': 0, 'false_positive': 357, 'false_negative': 0, 'true_positive': 212}",569,0.001349
+isolation_forest,42,0.2,,0.6977,0.6754,0.3632,0.4724,0.8964,0.1036,0.6368,"{'true_negative': 320, 'false_positive': 37, 'false_negative': 135, 'true_positive': 77}",114,0.091354
+lof,42,0.2,,0.6063,0.4412,0.2123,0.2866,0.8403,0.1597,0.7877,"{'true_negative': 300, 'false_positive': 57, 'false_negative': 167, 'true_positive': 45}",102,0.006528
+one_class_svm,42,0.2,,0.6327,0.5053,0.6792,0.5795,0.605,0.395,0.3208,"{'true_negative': 216, 'false_positive': 141, 'false_negative': 68, 'true_positive': 144}",285,0.013497
+dbscan,42,0.2,,0.3726,0.3726,1.0,0.5429,0.0,1.0,0.0,"{'true_negative': 0, 'false_positive': 357, 'false_negative': 0, 'true_positive': 212}",569,0.001747
